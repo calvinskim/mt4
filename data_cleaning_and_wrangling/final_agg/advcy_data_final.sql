@@ -39,15 +39,11 @@ as
 from
   `marketeam_data.advcy_data_temp` d
 left join
-  `marketeam_data.advcy_samples` s
-  on d.account_id = s.account_id
-left join
   `marketeam_data.advcy_donor_clean` c
   on d.account_id = c.account_id
 where
   d.first_sustainer is false
   and d.sustainer_flag is false
-  and s.sustainer_flag is false
   )
 union all
 (select
@@ -57,12 +53,8 @@ union all
 from
   `marketeam_data.advcy_data_temp` d
 left join
-  `marketeam_data.advcy_samples` s
-  on d.account_id = s.account_id
-left join
   `marketeam_data.advcy_donor_clean` c
   on d.account_id = c.account_id
 where
   d.first_sustainer is true
-  and d.sustainer_flag is true
-  and s.sustainer_flag is true))
+  and d.sustainer_flag is true))
