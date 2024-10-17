@@ -52,11 +52,10 @@ left join
   on d.State = sr2.state
 left join
   `marketeam_data.health2_zip_rank` zr1
-  on d.Zip = zr1.zip
+  on COALESCE(d.Zip,'99999') = COALESCE(zr1.zip,'99999')
 left join
   `marketeam_data.all_zip_rank` zr2
-  on d.Zip = zr2.zip
+  on COALESCE(d.Zip,'99999') = COALESCE(zr2.zip,'99999')
 where
   d.State in ('AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY')
-  and d.City is not null
-  and d.Zip is not null)
+)
